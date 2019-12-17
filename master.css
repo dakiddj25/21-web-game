@@ -1,0 +1,53 @@
+/* https://i.gifer.com/origin/c0/c0818f8f725f043950615d0c8d077707_w200.gif */
+body{
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://cdn.hipwallpaper.com/i/46/65/hEiUkp.jpg");
+    background-repeat: no-repeat, repeat;
+    height:100vh;
+    width: auto;
+    background-color: rgb(185,222,236);
+}
+h1{
+    align-self: center;
+    text-align: center;
+}
+
+#holder{
+
+    margin:auto;
+    width: 50%;
+    align-self: center;
+    text-align: center;
+}
+#human{
+    margin: auto;
+}
+ #cpu{ 
+    margin: auto;
+    position: relative;
+
+} 
+h3{
+    color: white;
+}
+
+
+
+.history{
+  
+    width: 100%;
+    text-align: center;
+}
+#main{
+    display: flex;
+
+    flex-direction: row;
+    width: 100%;
+
+    align-content: space-around;
+    
+}
+ul{
+    list-style-type: none;
+}
