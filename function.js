@@ -14,8 +14,7 @@ let score = 0;
             debugger
         }
         deck_id = res.data.deck_id
-        // drawCards()
-        // hitCard()
+
     }
 
     drawCards = async (cardhand,callback, num = 2) => {
@@ -66,6 +65,7 @@ let score = 0;
             img.src = hand[hand.length-1].image
             console.log(hand.length)
             div.appendChild(img)
+//needs to change adding to much somwhere here
 
         hand.forEach(el => {
             if(el.value === "KING" || el.value === "QUEEN" || el.value === "JACK"  ){
@@ -88,7 +88,8 @@ let score = 0;
             h3.innerText =  `Your score is: ${score} WIN!`
         }
     if(score > 21){
-        
+        let hit = document.querySelector("#hit")
+            hit.style.display = "none"
         h3.innerText =  `Your score is: ${score} You lose!`
     }
     }
@@ -101,31 +102,36 @@ let score = 0;
         isBust(score);
     }
 
-    CpuScorecount = (score) => {
+    CpuScorecount = (cpscore) => {
         let h3 = document.querySelector("#cpuscore")
         let div = document.querySelector("#cpu");
-        h3.innerText =  `Your score is: ${score}`
+        h3.innerText =  `Your score is: ${cpscore}`
          div.appendChild(h3)
-         isBust(score);
+         isBust(cpscore);
      }
     
 
-    stayGame = (score) => {
-            if(humanvalue === 21){
-                console.log("YOU WIN!!")
-            } else if(humanvalue < 21 && humanvalue > cpuscore){
+    stayGame = () => {
+        let hit = document.querySelector("#hit")
+            hit.style.display = "none"
+        if(cpuscore < 11){
+            drawCards(cpuHand,cpuPlayer, 1)
+        }
+            if(score < 21 && score > cpuscore){
                 console.log("you win")
+                let h3 = document.querySelector("#score")
+                h3.innerText =  `Your score is: ${score} You Win`
             } else {
-                console.log("CPU WINS")
+                console.log(score +"CPU WINS")
+                let h3 = document.querySelector("#cpuscore")
+                h3.innerText =  `CPU score is: ${cpuscore} House Wins`
             }
 
     }
 
     let staybtn = document.querySelector("#stay")
     staybtn.addEventListener("click", () => {
-        if(hand.length < 2){
            stayGame()
-        }
         staybtn.style.display = "none"
         
     })
@@ -150,7 +156,9 @@ let score = 0;
             drawCards(hand,humanPlayer, 1)
             // drawCards(cpuHand,cpuPlayer, 1)
             // console.log(score() + " = score") 
+           
         }
+        
     })
 
 
