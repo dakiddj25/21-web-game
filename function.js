@@ -23,16 +23,10 @@ let score = 0;
 
            draw.data.cards.forEach( (el) => {
                cardhand.push(el)
-            //    cpuHand.push(el)
+         
            })
-        //     let card1 = draw.data.cards[0]
-        //    let card2 = draw.data.cards[1]
-        //    hand.push(card1)
-        //    hand.push(card2)
-        
-        //    humanPlayer()
+    
            callback()
-        //    cpuPlayer()
        
         }
         catch(err) {
@@ -65,8 +59,8 @@ let score = 0;
             img.src = hand[hand.length-1].image
             console.log(hand.length)
             div.appendChild(img)
-//needs to change adding to much somwhere here
 
+            score = 0;
         hand.forEach(el => {
             if(el.value === "KING" || el.value === "QUEEN" || el.value === "JACK"  ){
                 score += 10;
@@ -105,7 +99,7 @@ let score = 0;
     CpuScorecount = (cpscore) => {
         let h3 = document.querySelector("#cpuscore")
         let div = document.querySelector("#cpu");
-        h3.innerText =  `Your score is: ${cpscore}`
+        // h3.innerText =  `House score is: `
          div.appendChild(h3)
          isBust(cpscore);
      }
@@ -114,7 +108,7 @@ let score = 0;
     stayGame = () => {
         let hit = document.querySelector("#hit")
             hit.style.display = "none"
-        if(cpuscore < 11){
+        if(cpuscore < 10){
             drawCards(cpuHand,cpuPlayer, 1)
         }
             if(score < 21 && score > cpuscore){
@@ -143,8 +137,7 @@ let score = 0;
         if(hand.length < 2){
             drawCards(hand,humanPlayer)
             drawCards(cpuHand,cpuPlayer)
-            // drawCards(cpuHand)
-            // console.log(score() + " = score") 
+
         }
         start.style.display = "none"
         
@@ -153,10 +146,7 @@ let score = 0;
     let hit = document.querySelector("#hit")
     hit.addEventListener("click", () => {
         if(hand.length > 1){
-            drawCards(hand,humanPlayer, 1)
-            // drawCards(cpuHand,cpuPlayer, 1)
-            // console.log(score() + " = score") 
-           
+            drawCards(hand,humanPlayer, 1)   
         }
         
     })
@@ -169,9 +159,11 @@ let score = 0;
         if(cpuHand.length === 2){
             cpuHand.forEach((el, i) => {
                 let img = document.createElement("img")
-               img.src = el.image
+                img.id = "cpuImg"
+               img.src = "https://www.atomsindustries.com/assets/images/items/ASD1750/roadhouse-back.png"
                console.log(el , i)
                div.appendChild(img)
+               
 
                if(el.value === "KING" || el.value === "QUEEN" || el.value === "JACK"  ){
                 cpuscore += 10;

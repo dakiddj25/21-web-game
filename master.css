@@ -51,3 +51,8 @@ h3{
 ul{
     list-style-type: none;
 }
+#cpuImg{
+    height: 314px;
+    width: 226px;
+    margin: 0;
+}
