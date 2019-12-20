@@ -56,3 +56,16 @@ ul{
     width: 226px;
     margin: 0;
 }
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: teal;
+    padding: 16px;
+  }
+  
+  .button:hover {
+    background-color: white; /* Green */
+    color: #4CAF50;
+  }

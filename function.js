@@ -76,17 +76,22 @@ let score = 0;
 
     }
 
-    isBust = (score) => {
-        let h3 = document.querySelector("h3")
+    isBust = (score, h3) => {
+        // let h3 = document.querySelector("h3")
         if(score === 21){
             h3.innerText =  `Your score is: ${score} WIN!`
+            let hit = document.querySelector("#hit")
+            hit.style.display = "none"
+            let stay = document.querySelector("#stay")
+            stay.style.display = "none"
         }
     if(score > 21){
         let hit = document.querySelector("#hit")
-            hit.style.display = "none"
+        hit.style.display = "none"
         let stay = document.querySelector("#stay")
         stay.style.display = "none"
         h3.innerText =  `Your score is: ${score} You lose!`
+        showCpuHand()
     }
     }
 
@@ -95,7 +100,7 @@ let score = 0;
        let div = document.querySelector("#human");
        h3.innerText =  `Your score is: ${score}`
         div.appendChild(h3)
-        isBust(score);
+        isBust(score,h3);
     }
 
     CpuScorecount = (cpscore) => {
@@ -103,7 +108,7 @@ let score = 0;
         let div = document.querySelector("#cpu");
         // h3.innerText =  `House score is: `
          div.appendChild(h3)
-         isBust(cpscore);
+         isBust(cpscore,h3);
      }
     
 
@@ -129,10 +134,11 @@ let score = 0;
 
     let staybtn = document.querySelector("#stay")
     staybtn.addEventListener("click", () => {
+        if(hand.length > 1){
         showCpuHand()
            stayGame()
         staybtn.style.display = "none"
-        
+        }
     })
 
 
@@ -212,6 +218,7 @@ let score = 0;
         })
         let cpuh3 = document.createElement("h3")
         cpuh3.innerText = `CPU score is: ${cpuscore}`
+        cpuh3.id = "cpuscore"
         div.appendChild(cpuh3)
         stayGame()
     }
