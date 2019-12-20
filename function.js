@@ -84,6 +84,8 @@ let score = 0;
     if(score > 21){
         let hit = document.querySelector("#hit")
             hit.style.display = "none"
+        let stay = document.querySelector("#stay")
+        stay.style.display = "none"
         h3.innerText =  `Your score is: ${score} You lose!`
     }
     }
@@ -108,6 +110,8 @@ let score = 0;
     stayGame = () => {
         let hit = document.querySelector("#hit")
             hit.style.display = "none"
+        let stay = document.querySelector("#stay")
+        stay.style.display = "none"
         if(cpuscore < 10){
             drawCards(cpuHand,cpuPlayer, 1)
         }
@@ -125,6 +129,7 @@ let score = 0;
 
     let staybtn = document.querySelector("#stay")
     staybtn.addEventListener("click", () => {
+        showCpuHand()
            stayGame()
         staybtn.style.display = "none"
         
@@ -182,6 +187,7 @@ let score = 0;
             div.appendChild(img)
 
         cpuHand.forEach(el => {
+            
             if(el.value === "KING" || el.value === "QUEEN" || el.value === "JACK"  ){
                 cpuscore += 10;
             } else if(el.value === "ACE" ){
@@ -193,7 +199,21 @@ let score = 0;
          })
          CpuScorecount(cpuscore)
         } 
+    }
 
+    const showCpuHand =() =>{
+        let div = document.querySelector("#cpu");
+        div.innerHTML = ""
+        cpuHand.forEach(el => {
+            let img = document.createElement("img")
+            img.src = el.image
+            div.appendChild(img)
+            // debugger
+        })
+        let cpuh3 = document.createElement("h3")
+        cpuh3.innerText = `CPU score is: ${cpuscore}`
+        div.appendChild(cpuh3)
+        stayGame()
     }
     
 
